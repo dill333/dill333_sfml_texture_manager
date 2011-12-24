@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TEXTUREMANAGER_H
+#define TEXTUREMANAGER_H
 
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -26,3 +27,4 @@ public:
 	static sf::Texture *getTexture(string str);
 };
 
+#endif
