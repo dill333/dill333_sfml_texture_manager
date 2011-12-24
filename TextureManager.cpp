@@ -10,12 +10,14 @@ vector<string> TextureManager::loaded;
 sf::Texture *TextureManager::getTexture(string str)
 {
 
+	// See if we have already loaded this texture
 	for(int i = 0; i < loaded.size(); i++)
 	{
 		if(!str.compare(loaded.at(i)))
 			return textures[i];
 	}
 
+	// Time to load the new texture
 	sf::Texture *texture = new sf::Texture();
 	if(texture->LoadFromFile(str))
 	{
@@ -23,7 +25,7 @@ sf::Texture *TextureManager::getTexture(string str)
 		textures.push_back(texture);
 		return textures[textures.size() - 1];
 	}
-	else
+	else	// Could not load the file
 	{
 		delete texture;
 		return NULL;
@@ -34,6 +36,7 @@ sf::Texture *TextureManager::getTexture(string str)
 TextureManager::~TextureManager()
 {
 
+	// Delete all of the textures we used
 	for(int i = 0; i < textures.size(); i++)
 		delete textures[i];
 
